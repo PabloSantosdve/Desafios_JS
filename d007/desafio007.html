@@ -1,32 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
-	<style>
-		h1{
-			font-weight: bold;
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 50px;
-		}
-		.btn{
-			padding:  40px;
-			font-size:  25px;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor Real</title>
+    <style>
+        h1 {
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+        }
+        .btn {
+            padding: 40px;
+            font-size: 25px;
+        }
+        #convert {
+            margin-top: 10px;
+            font-size: 25px;
+        }
+    </style>
 </head>
 <body>
-	<h1></h1>
+    <h1>Conversor R$ > US$</h1>
 
-	<button class="btn" onclick="button()">
-		
-	</button>
+    <button class="btn" onclick="button()">
+        Converter
+    </button>
 
-	<script>
-		function button(){
+    <div id="convert">Clique no botão acima</div>
 
-		}
-	</script>
+    <script>
+        // Solicita ao usuário a taxa de câmbio do dólar antes de iniciar a conversão
+        let exchangeRate = parseFloat(prompt('Antes de mais nada. Quanto está a cotação do dólar agora? '));
+
+        // Verifica se a taxa de câmbio é um número válido
+        if (isNaN(exchangeRate) || exchangeRate <= 0) {
+            alert('Taxa de câmbio inválida. Por favor, recarregue a página e insira uma taxa de câmbio válida.');
+        }
+
+        // Função que realiza a conversão quando o botão é clicado
+        function button() {
+            let real = parseFloat(prompt('Quantos R$ você tem na carteira? '));
+
+            // Verifica se o valor em reais é um número válido
+            if (isNaN(real) || real < 0) {
+                alert('Número inválido, por favor digite um número válido');
+                return;
+            } else {
+                // Converte o valor de reais para dólares usando a taxa de câmbio fornecida
+                let dollars = real / exchangeRate;
+
+                // Atualiza o conteúdo da div com o resultado da conversão
+                document.getElementById('convert').innerHTML = `<strong> O valor em Reais digitado foi: R$${real.toFixed(2)}</strong><br>O valor em Dólares é: $${dollars.toFixed(2)}. A taxa de câmbio utilizada foi de ${exchangeRate}.`;
+            }
+        }
+    </script>
 </body>
 </html>

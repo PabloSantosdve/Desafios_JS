@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Antes e Depois</title>
-	<style>
-		h1{
-			font-weight: bold;
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 50px;
-		}
-		.btn{
-			padding:  40px;
-			font-size:  25px;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antes e Depois</title>
+    <style>
+        /* Estilos para o título */
+        h1 {
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+        }
+        /* Estilos para o botão */
+        .btn {
+            padding: 40px;
+            font-size: 25px;
+        }
+    </style>
 </head>
 <body>
-	<h1>Antes e Depois</h1>
+    <!-- Título principal -->
+    <h1>Antes e Depois</h1>
 
-	<button class="btn" onclick="button()">
-		Antecessor e Sucessor
-	</button>
+    <!-- Botão que inicia o desafio ao ser clicado -->
+    <button class="btn" onclick="button()">
+        Antecessor e Sucessor
+    </button>
 
-	<script>
+    <script>
+        // Função chamada quando o botão é clicado
+        function button() {
+            // Solicita ao usuário que insira um número inteiro
+            let n = parseInt(window.prompt('Digite um número inteiro qualquer'));
 
-		function button(){
-			let n = window.parseInt(prompt('Digite um numero inteiro qualquer '))
-			let ant = n - 1
-			let suc = n +1
+            // Calcula o antecessor e o sucessor
+            let ant = n - 1;
+            let suc = n + 1;
 
-
-			window.alert(`Antes de ${n}, temos o número ${ant}. \nDepois de ${n}, temos o número ${suc}.`)
-		}
-	</script>
+            // Exibe um alerta com a mensagem personalizada
+            window.alert(`Antes de ${n}, temos o número ${ant}.\nDepois de ${n}, temos o número ${suc}.`);
+        }
+    </script>
 </body>
 </html>

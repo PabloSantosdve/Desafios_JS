@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Conversor de medidas</title>
-	<style>
-		body {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Medidas</title>
+    <style>
+        body {
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -28,23 +28,49 @@
         .output {
             margin-top: 20px;
         }
-	</style>
+    </style>
 </head>
 <body>
-	 <!-- Container principal -->
-	 <div class="container">
+    <!-- Container principal -->
+    <div class="container">
         <h1>Conversor de Medidas</h1>
         <!-- Botão para iniciar a conversão -->
-        <button id="convertButton">Converter Distância</button>
+        <button onclick="convert()">Converter Distância</button>
         <!-- Seção onde os resultados serão exibidos -->
-        <div class="output" id=""></div>
+        <div class="output" id="outputSection"></div>
     </div>
-	<script>
-		function button(){
-			
+    <script>
+        // Função para converter metros para outras unidades
+        function convert() {
+            // Solicita ao usuário que insira uma distância em metros
+            let meters = prompt('Digite a distância em metros:');
+            meters = parseFloat(meters); // Converte para número flutuante
 
-			
-		}
-	</script>
+            // Verifica se a entrada é um número válido
+            if (!isNaN(meters)) {
+                // Calcula as conversões para outras unidades de medida
+                const km = meters / 1000;
+                const hm = meters / 100;
+                const dam = meters / 10;
+                const dm = meters * 10;
+                const cm = meters * 100;
+                const mm = meters * 1000;
+
+                // Exibe os resultados na seção de saída
+                document.getElementById('outputSection').innerHTML = `
+                    <p><strong>${meters} metros é igual a:</strong></p>
+                    <p>${km} km</p>
+                    <p>${hm} hm</p>
+                    <p>${dam} dam</p>
+                    <p>${dm} dm</p>
+                    <p>${cm} cm</p>
+                    <p>${mm} mm</p>
+                `;
+            } else {
+                // Alerta o usuário se o valor inserido não for um número válido
+                alert('Por favor, digite um número válido.');
+            }
+        }
+    </script>
 </body>
 </html>

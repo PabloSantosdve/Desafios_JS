@@ -1,32 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
-	<style>
-		h1{
-			font-weight: bold;
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 50px;
-		}
-		.btn{
-			padding:  40px;
-			font-size:  25px;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Desconto</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            font-weight: bold;
+            font-size: 50px;
+        }
+        .btn {
+            padding: 20px 40px;
+            font-size: 25px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 25px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-	<h1></h1>
+    <h1>Desconto de 10%</h1>
 
-	<button class="btn" onclick="button()">
-		
-	</button>
+    <button class="btn" onclick="calculateDiscount()">
+        Calcular Desconto
+    </button>
 
-	<script>
-		function button(){
+    <div id="result">Clique no botão acima para iniciar</div>
 
-		}
-	</script>
+    <script>
+        function calculateDiscount() {
+            const product = prompt("Que produto você está comprando?");
+            if (!product) {
+                alert('Por favor, insira o nome do produto.');
+                return;
+            }
+
+            const value = parseFloat(prompt(`Qual o preço de ${product}?`));
+            if (isNaN(value) || value <= 0) {
+                alert('Valor inválido. Por favor, digite um número válido.');
+                return;
+            }
+
+            const discountRate = 0.10;
+            const discountAmount = value * discountRate;
+            const discountedPrice = value - discountAmount;
+
+            displayResult(product, value, discountAmount, discountedPrice);
+        }
+
+        function displayResult(product, originalPrice, discountAmount, finalPrice) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <strong>Produto:</strong> ${product}<br>
+                <strong>Preço original:</strong> R$${originalPrice.toFixed(2)}<br>
+                <strong>Desconto:</strong> R$${discountAmount.toFixed(2)}<br>
+                <strong>Preço com desconto:</strong> R$${finalPrice.toFixed(2)}
+            `;
+        }
+    </script>
 </body>
 </html>

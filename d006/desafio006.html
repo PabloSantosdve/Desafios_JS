@@ -1,32 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
-	<style>
-		h1{
-			font-weight: bold;
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 50px;
-		}
-		.btn{
-			padding:  40px;
-			font-size:  25px;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de temperaturas</title>
+    <style>
+        /* Estilos para o título */
+        h1 {
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+        }
+        /* Estilos para o botão */
+        .btn {
+            padding: 40px;
+            font-size: 25px;
+        }
+        /* Estilos para o elemento de saída */
+        #convert {
+            margin-top: 10px;
+            font-size: 25px;
+        }
+    </style>
 </head>
 <body>
-	<h1></h1>
+    <!-- Título principal -->
+    <h1>Conversor de temperaturas</h1>
 
-	<button class="btn" onclick="button()">
-		
-	</button>
+    <!-- Botão que inicia a conversão ao ser clicado -->
+    <button class="btn" onclick="button()">
+        Converter
+    </button>
 
-	<script>
-		function button(){
+    <!-- Div onde os resultados da conversão serão exibidos -->
+    <div id="convert">Clique no botão acima para iniciar</div>
 
-		}
-	</script>
+    <script>
+        // Função chamada quando o botão é clicado
+        function button() {
+            // Solicita ao usuário que insira uma temperatura em Celsius
+            let temp = parseFloat(prompt('Digite uma temperatura em °C (Celsius)'));
+
+            // Verifica se a entrada é um número válido
+            if (isNaN(temp)) {
+                // Exibe um alerta caso a entrada não seja um número válido e chama a função novamente
+                alert('Número inválido, por favor digite um número válido!');
+                return button();
+            } else {
+                // Converte a temperatura de Celsius para Kelvin
+                let kelvin = temp + 273.15;
+                // Converte a temperatura de Celsius para Fahrenheit
+                let fahr = (temp * 9/5) + 32;
+
+                // Atualiza o conteúdo da div com os resultados da conversão
+                document.getElementById('convert').innerHTML = `<strong> O valor em Celsius digitado foi: ${temp}°C</strong><br>${kelvin}K<br>${fahr}°F`;
+            }
+        }
+    </script>
 </body>
 </html>

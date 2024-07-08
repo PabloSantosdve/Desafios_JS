@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Calculando Troco</title>
-	<style>
-		h1{
-			font-weight: bold;
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 50px;
-		}
-		.btn{
-			padding:  40px;
-			font-size:  25px;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculando Troco</title>
+    <style>
+        /* Estilos para o título */
+        h1 {
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+        }
+        /* Estilos para o botão */
+        .btn {
+            padding: 40px;
+            font-size: 25px;
+        }
+    </style>
 </head>
 <body>
-	<h1>Calculando o troco</h1>
+    <!-- Título principal -->
+    <h1>Calculando o troco</h1>
 
-	<button class="btn" onclick="button()">
-		Comprar produto
-	</button>
+    <!-- Botão que inicia o cálculo ao ser clicado -->
+    <button class="btn" onclick="button()">
+        Comprar produto
+    </button>
 
-	<p>Clique no botao para começar</p>
+    <!-- Texto de instrução -->
+    <p>Clique no botão para começar</p>
 
-	<script>
-		function button(){
-			let product = window.prompt("Que produto você está comprando? ") 
-			let value =  window.parseFloat(prompt(`Quanto custa ${product} que você está comprando? `))  
-			let amount = window.parseFloat(prompt(`Qual foi o valor que você deu para pagar o ${product}?`))
+    <script>
+        // Função chamada quando o botão é clicado
+        function button() {
+            // Solicita ao usuário que insira o nome do produto
+            let product = window.prompt("Que produto você está comprando?");
 
-			let res = amount  - value 
+            // Solicita ao usuário que insira o valor do produto e converte para um número flutuante
+            let value = parseFloat(window.prompt(`Quanto custa ${product} que você está comprando?`));
 
-			window.alert(`Você comprou ${product} que custou R$${value}. \nDeu R$ ${amount} em dinheiro e vai receber R$ ${res} de troco. \n Volte sempre!`)
-		}
-	</script>
+            // Solicita ao usuário que insira o valor dado para pagamento e converte para um número flutuante
+            let amount = parseFloat(window.prompt(`Qual foi o valor que você deu para pagar o ${product}?`));
+
+            // Calcula o troco
+            let res = amount - value;
+
+            // Exibe um alerta com a mensagem personalizada
+            window.alert(`Você comprou ${product} que custou R$${value.toFixed(2)}.\nDeu R$${amount.toFixed(2)} em dinheiro e vai receber R$${res.toFixed(2)} de troco.\nVolte sempre!`);
+        }
+    </script>
 </body>
 </html>
