@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Desconto</title>
     <style>
+        /* Estilização do corpo para centralizar o conteúdo */
         body {
             display: flex;
             flex-direction: column;
@@ -13,16 +14,19 @@
             height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
         }
+        /* Estilização do título */
         h1 {
             font-weight: bold;
             font-size: 50px;
         }
+        /* Estilização do botão */
         .btn {
             padding: 20px 40px;
             font-size: 25px;
             margin: 20px;
             cursor: pointer;
         }
+        /* Estilização da div de resultado */
         #result {
             margin-top: 20px;
             font-size: 25px;
@@ -33,33 +37,42 @@
 <body>
     <h1>Desconto de 10%</h1>
 
+    <!-- Botão que chama a função de cálculo do desconto quando clicado -->
     <button class="btn" onclick="calculateDiscount()">
         Calcular Desconto
     </button>
 
+    <!-- Div onde o resultado será exibido -->
     <div id="result">Clique no botão acima para iniciar</div>
 
     <script>
+        // Função que solicita as informações do usuário e calcula o desconto
         function calculateDiscount() {
+            // Solicita o nome do produto ao usuário
             const product = prompt("Que produto você está comprando?");
-            if (!product) {
+            if (!product) { // Verifica se o nome do produto foi inserido
                 alert('Por favor, insira o nome do produto.');
                 return;
             }
 
+            // Solicita o preço do produto e converte para número float
             const value = parseFloat(prompt(`Qual o preço de ${product}?`));
+            // Verifica se a entrada é válida e positiva
             if (isNaN(value) || value <= 0) {
                 alert('Valor inválido. Por favor, digite um número válido.');
                 return;
             }
 
+            // Define a taxa de desconto e calcula o valor do desconto e o preço final
             const discountRate = 0.10;
             const discountAmount = value * discountRate;
             const discountedPrice = value - discountAmount;
 
+            // Exibe o resultado
             displayResult(product, value, discountAmount, discountedPrice);
         }
 
+        // Função que exibe o resultado na div 'result'
         function displayResult(product, originalPrice, discountAmount, finalPrice) {
             const resultDiv = document.getElementById('result');
             resultDiv.innerHTML = `
